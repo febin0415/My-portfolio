@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Febin A. Varghese | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --accent: #f97316;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: rgba(37, 99, 235, 0.2);
+            z-index: -1;
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            color: var(--gray);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: rgba(15, 23, 42, 0.7);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(37, 99, 235, 0.1);
+        }
+        
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .stat-card h4 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card p {
+            color: var(--gray);
+            margin: 0;
+        }
+        
+        /* Skills Section */
+        .skills {
+            padding: 100px 0;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-card {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-card p {
+            color: var(--gray);
+        }
+        
+        /* Certifications Section */
+        .certifications {
+            padding: 100px 0;
+            background: rgba(15, 23, 42, 0.7);
+        }
+        
+        .cert-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .cert-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .cert-thumbnail {
+            height: 200px;
+            background: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cert-thumbnail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.3), rgba(124, 58, 237, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cert-thumbnail:hover::before {
+            opacity: 1;
+        }
+        
+        .cert-thumbnail i {
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+        
+        .cert-thumbnail:hover i {
+            opacity: 1;
+        }
+        
+        .cert-details {
+            padding: 1.5rem;
+        }
+        
+        .cert-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-details p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .cert-details .btn {
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 0;
+            background: rgba(15, 23, 42, 0.7);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(37, 99, 235, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .portfolio-overlay p {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .contact-info p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-details {
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            width: 40px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 2.5rem;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.9);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.7);
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .hero-text p {
+                margin: 0 auto 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn {
+                display: block;
+                margin: 1rem auto;
+                width: 80%;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+            
+            .profile-img {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">F<span>V</span></div>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm <span class="highlight">Febin A. Varghese</span></h1>
+                <h2>UI/UX Designer | Digital Marketing Expert | Photo/Video Editor</h2>
+                <p>Creative professional with expertise in graphic design, digital marketing, and multimedia editing. I transform ideas into visually stunning experiences that captivate audiences and drive results.</p>
+                <div class="hero-btns">
+                    <a href="#portfolio" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Hire Me</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQE7eRJPQZpp1g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1724959924175?e=1758153600&v=beta&t=qTlXjQuSkDvDznt6e-uS248Xz9PUFq1yq9mg2QhAANg" alt="Febin A. Varghese" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Creative Professional with Diverse Expertise</h3>
+                    <p>Hello! I'm Febin A. Varghese, a passionate creative professional with over 5 years of experience in UI/UX design, graphic design, digital marketing, and photo/video editing. I specialize in creating compelling visual experiences that communicate brand stories effectively.</p>
+                    <p>Throughout my career, I've worked with various organizations as a graphic designer and video editor, helping them establish strong brand identities and engaging digital content. As a freelancer, I've collaborated with clients worldwide to deliver innovative solutions that exceed expectations.</p>
+                    <p>My approach combines artistic creativity with technical expertise and strategic thinking to create designs that not only look beautiful but also drive measurable results.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-briefcase"></i>
+                            <h4>5+</h4>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-project-diagram"></i>
+                            <h4>120+</h4>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <h4>80+</h4>
+                            <p>Happy Clients</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-award"></i>
+                            <h4>12</h4>
+                            <p>Awards Won</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">My Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-pencil-ruler"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Creating intuitive user interfaces and seamless user experiences for web and mobile applications.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Graphic Design</h3>
+                    <p>Designing logos, branding materials, print collateral, and digital graphics.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Digital Marketing</h3>
+                    <p>Developing and implementing effective digital marketing strategies across multiple platforms.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Photo Editing</h3>
+                    <p>Professional photo retouching, manipulation, and enhancement.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Editing</h3>
+                    <p>Creating compelling video content with professional editing techniques.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Responsive Design</h3>
+                    <p>Building websites that work flawlessly on all devices and screen sizes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications" id="certifications">
+        <div class="container cert-container">
+            <h2 class="section-title">My Certifications</h2>
+            <div class="cert-grid" id="certificationsGrid">
+                <!-- Certifications will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">My Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="UI/UX Project" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>E-commerce App Design</h3>
+                        <p>Complete UI/UX redesign for a fashion retail mobile application.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Branding Project" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Corporate Branding</h3>
+                        <p>Complete brand identity for a tech startup including logo and guidelines.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Digital Marketing" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Social Media Campaign</h3>
+                        <p>Complete digital marketing campaign for a restaurant chain.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1579820010410-c10411aaaa88?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Video Editing" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Product Promo Video</h3>
+                        <p>Commercial video for a new consumer electronics product.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Talk About Your Project</h3>
+                    <p>I'm available for freelance work and full-time positions. Feel free to contact me and I'll get back to you as soon as possible.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Kochi, Kerala, India</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>febin.varghese@example.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-behance"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">© 2023 Febin A. Varghese. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if(name && email && subject && message) {
+                alert(`Thank you ${name}! Your message has been sent. I'll get back to you soon.`);
+                contactForm.reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.skill-card, .portfolio-item, .stat-card, .cert-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Certifications data
+        const certifications = [
+            {
+                title: "UI&UX designing certifcation",
+                issuer: "Infosys",
+                date: "2024",
+                link: "https://drive.google.com/file/d/1s0AsuQiXax21vuaI_r1h7TGtqBYiXe7Q/view?usp=drivesdk"
+            },
+            {
+                title: "Graphic designing certification",
+                issuer: "Simplilearn",
+                date: "2023",
+                link: "https://drive.google.com/file/d/1rywvG39Ol-e0jqov0UrbShTdhilKT6fv/view?usp=drivesdk"
+            },
+            {
+                title: "Project manangement 101 cerification",
+                issuer: "Simplilearn",
+                date: "2024",
+                link: "https://drive.google.com/file/d/1s1JOKSPRDKlmm5Oi8vX4zuyFedXaYWGS/view?usp=drivesdk"
+            },
+            {
+                title: "website designin certification",
+                issuer: "Simplilearn",
+                date: "2024",
+                link: "https://drive.google.com/file/d/1s1yTfITptOjY2p-z2Zz7QIVRyYPW1znO/view?usp=drivesdk"
+            },
+           
+        
+        ];
+        
+        // Function to render certifications
+        function renderCertifications() {
+            const container = document.getElementById('certificationsGrid');
+            container.innerHTML = '';
+            
+            certifications.forEach(cert => {
+                const card = document.createElement('div');
+                card.className = 'cert-card';
+                card.innerHTML = `
+                    <div class="cert-thumbnail" onclick="window.open('${cert.link}', '_blank')">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-details">
+                        <h3>${cert.title}</h3>
+                        <p><strong>Issuer:</strong> ${cert.issuer} | <strong>Date:</strong> ${cert.date}</p>
+                        <a href="${cert.link}" target="_blank" class="btn">View Certificate</a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+        
+        // Initialize certifications
+        renderCertifications();
+        
+        // Function to add a new certification
+        function addCertification(title, issuer, date, link) {
+            certifications.push({ title, issuer, date, link });
+            renderCertifications();
+        }
+        
+        // Example of adding a new certification
+        // addCertification("New Certification", "Issuing Organization", "2023", "https://drive.google.com/...");
+    </script>
+</body>
+</html>
